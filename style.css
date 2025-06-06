@@ -71,14 +71,14 @@ button:hover {
 }
 
 body
-  <div class="glass-box">
-    <h1>EasyConvert</h1>
+  div class "glass-box"
+    <h1 EasyConvert</h1
     <!-- Hier kommen deine Eingabefelder, Auswahl und Buttons rein -->
     <input type="number" placeholder="Wert eingeben">
     <select>
-      <option>Option 1</option>
-      <option>Option 2</option>
-    </select>
-    <button>Umrechnen</button>
-  </div>
-</body>
+      <option Option 1</option
+      <option Option 2</option
+    </select
+        <button Umrechnen</button
+  </div
+</body
