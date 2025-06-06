@@ -1,0 +1,21 @@
+{
+  "name": "webdesign-projekt",
+  "version": "1.0.0",
+  "description": "Ein Webdesign-Projekt mit RGB-Hintergrund und transparenter Box.",
+  "main": "src/index.html",
+  "scripts": {
+    "start": "live-server src"
+  },
+  "keywords": [
+    "webdesign",
+    "rgb",
+    "transparent",
+    "box"
+  ],
+  "author": "Dein Name",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}

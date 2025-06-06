@@ -1,0 +1,84 @@
+body {
+  min-height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #e0e7ef, #ffffff, #b3c6e0, #4f8cff, #1a237e);
+  background-size: 400% 400%;
+  animation: rgbBG 18s ease-in-out infinite;
+  color: #222;
+}
+
+@keyframes rgbBG {
+  0% {background-position: 0% 50%;}
+  25% {background-position: 50% 100%;}
+  50% {background-position: 100% 50%;}
+  75% {background-position: 50% 0%;}
+  100% {background-position: 0% 50%;}
+}
+
+.glass-box {
+  background: rgba(255, 255, 255, 0.18); /* Weniger Deckkraft für mehr Durchsicht */
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25), 0 0 40px 10px rgba(79, 140, 255, 0.10);
+  backdrop-filter: blur(24px) brightness(1.12); /* Mehr Blur für stärkeren Glas-Effekt */
+  -webkit-backdrop-filter: blur(24px) brightness(1.12);
+  border-radius: 28px;
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  padding: 48px 36px;
+  min-width: 340px;
+  max-width: 95vw;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.3s;
+}
+
+.glass-box:hover {
+  box-shadow: 0 12px 48px 0 rgba(31, 38, 135, 0.45), 0 0 60px 20px rgba(79, 140, 255, 0.25);
+}
+
+input, select, button {
+  margin: 12px;
+  padding: 12px;
+  font-size: 1.05rem;
+  border-radius: 7px;
+  border: 1px solid #b3c6e0;
+  background: rgba(255,255,255,0.8);
+  transition: background 0.2s, border 0.2s;
+}
+
+input:focus, select:focus {
+  outline: none;
+  background: rgba(255,255,255,0.95);
+  border: 1.5px solid #4f8cff;
+}
+
+button {
+  cursor: pointer;
+  background: linear-gradient(90deg, #4f8cff 0%, #1a237e 100%);
+  color: white;
+  border: none;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px 0 rgba(79, 140, 255, 0.15);
+}
+
+button:hover {
+  background: linear-gradient(90deg, #1a237e 0%, #4f8cff 100%);
+  box-shadow: 0 4px 16px 0 rgba(79, 140, 255, 0.25);
+}
+
+body
+  <div class="glass-box">
+    <h1>EasyConvert</h1>
+    <!-- Hier kommen deine Eingabefelder, Auswahl und Buttons rein -->
+    <input type="number" placeholder="Wert eingeben">
+    <select>
+      <option>Option 1</option>
+      <option>Option 2</option>
+    </select>
+    <button>Umrechnen</button>
+  </div>
+</body>
