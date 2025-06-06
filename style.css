@@ -20,9 +20,9 @@ body {
 }
 
 .glass-box {
-  background: rgba(255, 255, 255, 0.18); /* Weniger Deckkraft für mehr Durchsicht */
+  background: rgba(255, 255, 255, 0.18);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25), 0 0 40px 10px rgba(79, 140, 255, 0.10);
-  backdrop-filter: blur(24px) brightness(1.12); /* Mehr Blur für stärkeren Glas-Effekt */
+  backdrop-filter: blur(24px) brightness(1.12);
   -webkit-backdrop-filter: blur(24px) brightness(1.12);
   border-radius: 28px;
   border: 1.5px solid rgba(255, 255, 255, 0.25);
@@ -63,6 +63,9 @@ button {
   border: none;
   transition: background 0.2s, box-shadow 0.2s;
   box-shadow: 0 2px 8px 0 rgba(79, 140, 255, 0.15);
+  font-weight: bold;
+  letter-spacing: 1px;
+  padding: 12px 28px;
 }
 
 button:hover {
@@ -70,15 +73,60 @@ button:hover {
   box-shadow: 0 4px 16px 0 rgba(79, 140, 255, 0.25);
 }
 
-body
-  div class "glass-box"
-    <h1 EasyConvert</h1
-    <!-- Hier kommen deine Eingabefelder, Auswahl und Buttons rein -->
-    <input type="number" placeholder="Wert eingeben">
+.glass-topbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 36px;
+  background: rgba(255,255,255,0.18);
+  box-shadow: 0 2px 16px 0 rgba(31, 38, 135, 0.12);
+  backdrop-filter: blur(14px) brightness(1.10);
+  -webkit-backdrop-filter: blur(14px) brightness(1.10);
+  border-bottom: 1.5px solid rgba(255,255,255,0.18);
+  z-index: 10;
+}
+
+.result-box {
+  min-height: 32px;
+  margin-bottom: 18px;
+  color: #1a237e;
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+  background: rgba(255,255,255,0.35);
+  border-radius: 8px;
+  box-shadow: 0 1px 8px 0 rgba(79, 140, 255, 0.07);
+  padding: 8px 0;
+  transition: background 0.2s;
+}
+
+/* Beispiel-HTML für die glasige Box */
+<div class="glass-box">
+  <h1>EasyConvert</h1>
+  <input type="number" placeholder="Wert eingeben">
+  <div style="display: flex; gap: 12px; margin-bottom: 16px;">
     <select>
-      <option Option 1</option
-      <option Option 2</option
-    </select
-        <button Umrechnen</button
-  </div
-</body
+      <option value="mm">Millimeter (mm)</option>
+      <option value="cm">Zentimeter (cm)</option>
+      <option value="dm">Dezimeter (dm)</option>
+      <option value="m">Meter (m)</option>
+      <option value="km">Kilometer (km)</option>
+    </select>
+    <span style="align-self: center;">→</span>
+    <select>
+      <option value="mm">Millimeter (mm)</option>
+      <option value="cm">Zentimeter (cm)</option>
+      <option value="dm">Dezimeter (dm)</option>
+      <option value="m">Meter (m)</option>
+      <option value="km">Kilometer (km)</option>
+    </select>
+  </div>
+  <button>Umrechnen</button>
+  <button>Zurücksetzen</button>
+</div>

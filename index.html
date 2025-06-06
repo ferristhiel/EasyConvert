@@ -6,14 +6,33 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="glass-topbar">
+    <span style="font-weight:bold; letter-spacing:1px;">EasyConvert Menü</span>
+    <!-- Hier können später Optionen, Menü, Darkmode etc. rein -->
+  </div>
   <div class="glass-box">
     <h1>EasyConvert</h1>
-    <input type="number" placeholder="Wert eingeben">
-    <select>
-      <option>Option 1</option>
-      <option>Option 2</option>
-    </select>
-    <button>Umrechnen</button>
+    <input id="inputValue" type="number" placeholder="Wert eingeben">
+    <div id="result" class="result-box"></div>
+    <div style="display: flex; gap: 12px; margin-bottom: 16px;">
+      <select id="fromUnit">
+        <option value="mm">Millimeter (mm)</option>
+        <option value="cm">Zentimeter (cm)</option>
+        <option value="dm">Dezimeter (dm)</option>
+        <option value="m">Meter (m)</option>
+        <option value="km">Kilometer (km)</option>
+      </select>
+      <span style="align-self: center;">→</span>
+      <select id="toUnit">
+        <option value="mm">Millimeter (mm)</option>
+        <option value="cm">Zentimeter (cm)</option>
+        <option value="dm">Dezimeter (dm)</option>
+        <option value="m">Meter (m)</option>
+        <option value="km">Kilometer (km)</option>
+      </select>
+    </div>
+    <button onclick="convert()">Umrechnen</button>
+    <button onclick="resetFields()">Zurücksetzen</button>
   </div>
 
   <script src="script.js"></script>
