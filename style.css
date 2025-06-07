@@ -9,9 +9,25 @@ body {
   background-size: 400% 400%;
   animation: rgbBG 18s ease-in-out infinite;
   color: #222;
+  transition: background 0.5s, color 0.5s;
+}
+
+body.dark {
+  background: linear-gradient(135deg, #181c22, #232a34, #2c3440, #1a237e, #111215);
+  background-size: 400% 400%;
+  animation: rgbBG-dark 18s ease-in-out infinite;
+  color: #f2f2f2;
 }
 
 @keyframes rgbBG {
+  0% {background-position: 0% 50%;}
+  25% {background-position: 50% 100%;}
+  50% {background-position: 100% 50%;}
+  75% {background-position: 50% 0%;}
+  100% {background-position: 0% 50%;}
+}
+
+@keyframes rgbBG-dark {
   0% {background-position: 0% 50%;}
   25% {background-position: 50% 100%;}
   50% {background-position: 100% 50%;}
@@ -106,12 +122,78 @@ button:hover {
   transition: background 0.2s;
 }
 
+.theme-switch {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.theme-switch .icon {
+    font-size: 1.5em;
+    transition: opacity 0.3s;
+    user-select: none;
+}
+
+.toggle-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    width: 48px;
+    height: 24px;
+    background: #e0e0e0;
+    border-radius: 12px;
+    position: relative;
+    transition: background 0.3s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.toggle-label .slider {
+    position: absolute;
+    left: 3px;
+    top: 3px;
+    width: 18px;
+    height: 18px;
+    background: #fff;
+    border-radius: 50%;
+    transition: left 0.3s, background 0.3s;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+}
+
+#toggleTheme {
+    display: none;
+}
+
+#toggleTheme:checked + .toggle-label {
+    background: #222b3a;
+}
+
+#toggleTheme:checked + .toggle-label .slider {
+    left: 27px;
+    background: #444c5e;
+}
+
+/* Sonne/Mond Sichtbarkeit */
+.theme-switch .sun {
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+.theme-switch .moon {
+    opacity: 0.4;
+    transition: opacity 0.3s;
+}
+body.dark .theme-switch .sun {
+    opacity: 0.4;
+}
+body.dark .theme-switch .moon {
+    opacity: 1;
+}
+
 /* Beispiel-HTML für die glasige Box */
 <div class="glass-box">
   <h1>EasyConvert</h1>
-  <input type="number" placeholder="Wert eingeben">
+  <input id="inputValue" type="number" placeholder="Wert eingeben">
   <div style="display: flex; gap: 12px; margin-bottom: 16px;">
-    <select>
+    <select id="fromUnit">
       <option value="mm">Millimeter (mm)</option>
       <option value="cm">Zentimeter (cm)</option>
       <option value="dm">Dezimeter (dm)</option>
@@ -119,7 +201,7 @@ button:hover {
       <option value="km">Kilometer (km)</option>
     </select>
     <span style="align-self: center;">→</span>
-    <select>
+    <select id="toUnit">
       <option value="mm">Millimeter (mm)</option>
       <option value="cm">Zentimeter (cm)</option>
       <option value="dm">Dezimeter (dm)</option>
@@ -127,6 +209,7 @@ button:hover {
       <option value="km">Kilometer (km)</option>
     </select>
   </div>
-  <button>Umrechnen</button>
-  <button>Zurücksetzen</button>
+  <div id="result" class="result-box"></div>
+  <button onclick="convert()">Umrechnen</button>
+  <button onclick="resetFields()">Zurücksetzen</button>
 </div>
