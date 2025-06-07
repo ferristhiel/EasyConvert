@@ -1,41 +1,34 @@
 body {
-  min-height: 100vh;
   margin: 0;
-  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  min-width: 100vw;
+  overflow-x: hidden;
+  background: #f5f5f5;
+  /* Flexbox entfernen */
+}
+
+.glass-topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 54px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #e0e7ef, #ffffff, #b3c6e0, #4f8cff, #1a237e);
-  background-size: 400% 400%;
-  animation: rgbBG 18s ease-in-out infinite;
-  color: #222;
-  transition: background 0.5s, color 0.5s;
-}
-
-body.dark {
-  background: linear-gradient(135deg, #181c22, #232a34, #2c3440, #1a237e, #111215);
-  background-size: 400% 400%;
-  animation: rgbBG-dark 18s ease-in-out infinite;
-  color: #f2f2f2;
-}
-
-@keyframes rgbBG {
-  0% {background-position: 0% 50%;}
-  25% {background-position: 50% 100%;}
-  50% {background-position: 100% 50%;}
-  75% {background-position: 50% 0%;}
-  100% {background-position: 0% 50%;}
-}
-
-@keyframes rgbBG-dark {
-  0% {background-position: 0% 50%;}
-  25% {background-position: 50% 100%;}
-  50% {background-position: 100% 50%;}
-  75% {background-position: 50% 0%;}
-  100% {background-position: 0% 50%;}
+  justify-content: space-between;
+  padding: 0 0,1px 0 0,1px; 
+  background: rgba(255,255,255,0.18);
+  box-shadow: 0 2px 16px 0 rgba(31, 38, 135, 0.12);
+  backdrop-filter: blur(14px) brightness(1.10);
+  -webkit-backdrop-filter: blur(14px) brightness(1.10);
+  border-bottom: 1.5px solid rgba(255,255,255,0.18);
+  z-index: 10;
 }
 
 .glass-box {
+  max-width: 400px;
+  width: 100%;
+  box-sizing: border-box;
   background: rgba(255, 255, 255, 0.18);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25), 0 0 40px 10px rgba(79, 140, 255, 0.10);
   backdrop-filter: blur(24px) brightness(1.12);
@@ -43,9 +36,7 @@ body.dark {
   border-radius: 28px;
   border: 1.5px solid rgba(255, 255, 255, 0.25);
   padding: 48px 36px;
-  min-width: 340px;
-  max-width: 95vw;
-  margin: 0 auto;
+  margin: 80px auto 0 auto; /* Abstand zur Topbar */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -87,24 +78,6 @@ button {
 button:hover {
   background: linear-gradient(90deg, #1a237e 0%, #4f8cff 100%);
   box-shadow: 0 4px 16px 0 rgba(79, 140, 255, 0.25);
-}
-
-.glass-topbar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 54px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 36px;
-  background: rgba(255,255,255,0.18);
-  box-shadow: 0 2px 16px 0 rgba(31, 38, 135, 0.12);
-  backdrop-filter: blur(14px) brightness(1.10);
-  -webkit-backdrop-filter: blur(14px) brightness(1.10);
-  border-bottom: 1.5px solid rgba(255,255,255,0.18);
-  z-index: 10;
 }
 
 .result-box {
@@ -187,29 +160,27 @@ body.dark .theme-switch .sun {
 body.dark .theme-switch .moon {
     opacity: 1;
 }
+@keyframes lightGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
-/* Beispiel-HTML für die glasige Box */
-<div class="glass-box">
-  <h1>EasyConvert</h1>
-  <input id="inputValue" type="number" placeholder="Wert eingeben">
-  <div style="display: flex; gap: 12px; margin-bottom: 16px;">
-    <select id="fromUnit">
-      <option value="mm">Millimeter (mm)</option>
-      <option value="cm">Zentimeter (cm)</option>
-      <option value="dm">Dezimeter (dm)</option>
-      <option value="m">Meter (m)</option>
-      <option value="km">Kilometer (km)</option>
-    </select>
-    <span style="align-self: center;">→</span>
-    <select id="toUnit">
-      <option value="mm">Millimeter (mm)</option>
-      <option value="cm">Zentimeter (cm)</option>
-      <option value="dm">Dezimeter (dm)</option>
-      <option value="m">Meter (m)</option>
-      <option value="km">Kilometer (km)</option>
-    </select>
-  </div>
-  <div id="result" class="result-box"></div>
-  <button onclick="convert()">Umrechnen</button>
-  <button onclick="resetFields()">Zurücksetzen</button>
-</div>
+@keyframes darkGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+body {
+  background: linear-gradient(270deg, #f5f5f5, #cbd5e1, #f5f5f5);
+  background-size: 600% 600%;
+  animation: lightGradient 15s ease infinite;
+  transition: background 0.5s ease;
+}
+
+body.dark {
+  background: linear-gradient(270deg, #1e3a8a, #374151, #1e3a8a); /* dunkelblau, grau */
+  background-size: 600% 600%;
+  animation: darkGradient 15s ease infinite;
+}
