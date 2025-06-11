@@ -3,10 +3,31 @@ body {
   min-height: 100vh;
   min-width: 100vw;
   overflow-x: hidden;
-  background: #f5f5f5;
-  /* Flexbox entfernen */
+  background: linear-gradient(270deg, #f5f5f5, #cbd5e1, #f5f5f5);
+  background-size: 600% 600%;
+  animation: lightGradient 15s ease infinite;
+  transition: background 0.5s ease;
 }
 
+body.dark {
+  background: linear-gradient(270deg, #1e3a8a, #374151, #1e3a8a);
+  background-size: 600% 600%;
+  animation: darkGradient 15s ease infinite;
+}
+
+@keyframes lightGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes darkGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Topbar & Glasbox */
 .glass-topbar {
   position: fixed;
   top: 0;
@@ -16,7 +37,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 0,1px 0 0,1px; 
+  padding: 0 0.1px; /* korrigiert */
   background: rgba(255,255,255,0.18);
   box-shadow: 0 2px 16px 0 rgba(31, 38, 135, 0.12);
   backdrop-filter: blur(14px) brightness(1.10);
@@ -47,6 +68,7 @@ body {
   box-shadow: 0 12px 48px 0 rgba(31, 38, 135, 0.45), 0 0 60px 20px rgba(79, 140, 255, 0.25);
 }
 
+/* Inputs und Buttons */
 input, select, button {
   margin: 12px;
   padding: 12px;
@@ -80,6 +102,7 @@ button:hover {
   box-shadow: 0 4px 16px 0 rgba(79, 140, 255, 0.25);
 }
 
+/* Ergebnisbox */
 .result-box {
   min-height: 32px;
   margin-bottom: 18px;
@@ -95,92 +118,162 @@ button:hover {
   transition: background 0.2s;
 }
 
+/* Theme Switch */
 .theme-switch {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .theme-switch .icon {
-    font-size: 1.5em;
-    transition: opacity 0.3s;
-    user-select: none;
+  font-size: 1.5em;
+  transition: opacity 0.3s;
+  user-select: none;
 }
 
 .toggle-label {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    width: 48px;
-    height: 24px;
-    background: #e0e0e0;
-    border-radius: 12px;
-    position: relative;
-    transition: background 0.3s;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  width: 48px;
+  height: 24px;
+  background: #e0e0e0;
+  border-radius: 12px;
+  position: relative;
+  transition: background 0.3s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
 .toggle-label .slider {
-    position: absolute;
-    left: 3px;
-    top: 3px;
-    width: 18px;
-    height: 18px;
-    background: #fff;
-    border-radius: 50%;
-    transition: left 0.3s, background 0.3s;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  border-radius: 50%;
+  transition: left 0.3s, background 0.3s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
 }
 
 #toggleTheme {
-    display: none;
+  display: none;
 }
 
 #toggleTheme:checked + .toggle-label {
-    background: #222b3a;
+  background: #222b3a;
 }
 
 #toggleTheme:checked + .toggle-label .slider {
-    left: 27px;
-    background: #444c5e;
+  left: 27px;
+  background: #444c5e;
 }
 
-/* Sonne/Mond Sichtbarkeit */
 .theme-switch .sun {
-    opacity: 1;
-    transition: opacity 0.3s;
+  opacity: 1;
+  transition: opacity 0.3s;
 }
+
 .theme-switch .moon {
-    opacity: 0.4;
-    transition: opacity 0.3s;
+  opacity: 0.4;
+  transition: opacity 0.3s;
 }
+
+.theme-switch {
+  position: fixed;
+  top: 10px;    /* Abstand von oben */
+  right: 10px;  /* Abstand von rechts */
+  z-index: 999; /* Damit er über allem liegt */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 body.dark .theme-switch .sun {
-    opacity: 0.4;
+  opacity: 0.4;
 }
+
 body.dark .theme-switch .moon {
-    opacity: 1;
-}
-@keyframes lightGradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  opacity: 1;
 }
 
-@keyframes darkGradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* Einstellungs-Button */
+.setting-btn {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 9999;
+
+  width: 45px;
+  height: 45px;
+
+  background-color: rgb(129, 110, 216);
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 0 0 2px rgb(212, 209, 255);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+
+  cursor: pointer;
 }
 
-body {
-  background: linear-gradient(270deg, #f5f5f5, #cbd5e1, #f5f5f5);
-  background-size: 600% 600%;
-  animation: lightGradient 15s ease infinite;
-  transition: background 0.5s ease;
+/* Balken */
+.bar {
+  width: 50%;
+  height: 2px;
+  background-color: rgb(229, 229, 229);
+  position: relative;
+  border-radius: 2px;
 }
 
-body.dark {
-  background: linear-gradient(270deg, #1e3a8a, #374151, #1e3a8a); /* dunkelblau, grau */
-  background-size: 600% 600%;
-  animation: darkGradient 15s ease infinite;
+/* Punkte auf Balken */
+.bar::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background-color: rgb(126, 117, 255);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 0 5px white;
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+/* Startposition der Punkte */
+.bar1::before {
+  left: 0%;
+  transform: translate(0%, -50%);
+}
+
+.bar2::before {
+  left: 100%;
+  transform: translate(-100%, -50%);
+}
+
+.bar3::before {
+  left: 0%;
+  transform: translate(0%, -50%);
+}
+
+/* Hover-Animation (Punkte tauschen die Seiten) */
+.setting-btn:hover .bar1::before {
+  left: 100%;
+  transform: translate(-100%, -50%);
+}
+
+.setting-btn:hover .bar2::before {
+  left: 0%;
+  transform: translate(0%, -50%);
+}
+
+.setting-btn:hover .bar3::before {
+  left: 100%;
+  transform: translate(-100%, -50%);
 }

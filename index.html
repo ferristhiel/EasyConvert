@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <title>EasyConvert</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
   <div class="glass-topbar">
-    <span style="font-weight:bold; letter-spacing:1px;">EasyConvert Menü</span>
     <div class="theme-switch">
       <span class="icon sun">☀️</span>
       <input type="checkbox" id="toggleTheme">
@@ -19,7 +18,7 @@
   </div>
   <div class="glass-box">
     <h1>EasyConvert</h1>
-    <input id="inputValue" type="number" placeholder="Wert eingeben">
+    <input id="inputValue" type="number" placeholder="Wert eingeben" required>
     <div id="result" class="result-box"></div>
     <div style="display: flex; gap: 12px; margin-bottom: 16px;">
       <select id="fromUnit">
@@ -41,7 +40,13 @@
     <button onclick="convert()">Umrechnen</button>
     <button onclick="resetFields()">Zurücksetzen</button>
   </div>
-
+<div
+button class="setting-btn">
+  <span class="bar bar1"></span>
+  <span class="bar bar2"></span>
+  <span class="bar bar1"></span>
+</button>
+</div>
   <script src="scribt.js"></script>
 </body>
 </html>
