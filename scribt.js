@@ -16,12 +16,14 @@ function convert() {
     km: 1000
   };
 
+  // Immer zuerst in Meter umrechnen, dann in die Ziel-Einheit
   const inMeter = value * factors[from];
   const result = inMeter / factors[to];
 
-  const formatted = result.toLocaleString('de-DE', {
+  // Maximal 6 Nachkommastellen, aber ohne unnötige Nullen
+  const formatted = parseFloat(result.toFixed(6)).toLocaleString('de-DE', {
     minimumFractionDigits: 0,
-    maximumFractionDigits: 2
+    maximumFractionDigits: 6
   });
 
   document.getElementById('result').innerText = `${value} ${from} = ${formatted} ${to}`;
@@ -34,13 +36,9 @@ function resetFields() {
 
 window.addEventListener('DOMContentLoaded', () => {
   const toggle = document.getElementById('toggleTheme');
-  toggle.addEventListener('change', () => {
-    document.body.classList.toggle('dark', toggle.checked);
-  });
-});
-window.addEventListener('DOMContentLoaded', () => {
-  const toggle = document.getElementById('toggleTheme');
-  toggle.addEventListener('change', () => {
-    document.body.classList.toggle('dark', toggle.checked);
-  });
+  if (toggle) {
+    toggle.addEventListener('change', () => {
+      document.body.classList.toggle('dark', toggle.checked);
+    });
+  }
 });

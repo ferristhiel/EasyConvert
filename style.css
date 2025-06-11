@@ -196,29 +196,26 @@ body.dark .theme-switch .sun {
 body.dark .theme-switch .moon {
   opacity: 1;
 }
-
 /* Einstellungs-Button */
 .setting-btn {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background-color: navy; /* Navy Blue */
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0px 0px 0px 2px rgba(0, 0, 128, 0.5); /* navy leicht transparent */
+
+  /* Position in obere linke Ecke */
   position: fixed;
   top: 10px;
   left: 10px;
-  z-index: 9999;
-
-  width: 45px;
-  height: 45px;
-
-  background-color: rgb(129, 110, 216);
-  border-radius: 10px;
-  border: none;
-  box-shadow: 0 0 0 2px rgb(212, 209, 255);
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 6px;
-
-  cursor: pointer;
+  z-index: 999;
 }
 
 /* Balken */
@@ -235,7 +232,7 @@ body.dark .theme-switch .moon {
   content: "";
   width: 6px;
   height: 6px;
-  background-color: rgb(126, 117, 255);
+  background-color: rgb(0, 0, 128); /* Navy Punktfarbe */
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
